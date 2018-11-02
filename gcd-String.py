@@ -1,4 +1,5 @@
 
+#http://www.it610.com/article/2189518.htm
 s = ''
 def gcd(m,n):
 	global s
