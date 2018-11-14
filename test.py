@@ -88,7 +88,7 @@ print(gcd(8,6))
 '''
 
 
-
+'''
 s = ''
 def gcd(m,n):
 	global s
@@ -127,3 +127,15 @@ def gcd(m,n):
 			return len(s)
 
 print('gcd is %d'%gcd(2166,6099))
+'''
+
+A = [11,22,33]
+print(id(A))
+def f(a):
+	print(id(a))
+	a = a+a
+	print(id(a))
+	print(a)
+f(A)
+print(id(A))
+print(A)
