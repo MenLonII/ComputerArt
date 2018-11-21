@@ -129,13 +129,57 @@ def gcd(m,n):
 print('gcd is %d'%gcd(2166,6099))
 '''
 
-A = [11,22,33]
-print(id(A))
-def f(a):
-	print(id(a))
-	a = a+a
-	print(id(a))
-	print(a)
-f(A)
-print(id(A))
-print(A)
+class Car(object):
+	def __init__(self, name):
+		self.name = name
+	def move(self):
+		print('%s is moving...' % self.name)
+
+class LCar(Car):
+	pass
+
+class BCar(Car):
+	pass
+
+
+class CarStore(object):
+	def createCar(self, name):
+		pass
+	def order(self):
+		self.car = self.createCar()
+		self.car.move()
+
+class Factory(object):
+    __instance = None
+    __firstInit = False
+
+    def __new__(cls):
+    	if not cls.__instance:
+    		cls.__instance = object.__new__(cls)
+    	return cls.__instance
+
+    def __init__(self):
+    	pass
+	
+	def buildCar(self,name):
+		if name == 'LCar':
+			car = LCar('LCar')
+		elif name == 'BCar':
+			car = BCar('BCar')
+		return car
+
+class FourSCarstore(CarStore):
+	def createCar(self, name):
+		return Factory().buildCar(name)
+
+store = FourSCarstore()
+l = store.createCar('LCar')
+b = store.createCar('BCar')
+print(l.move())
+print(b.move())
+
+s1 = FourSCarstore()
+s2 = FourSCarstore()
+print(id(s1))
+print(id(s2))
+
